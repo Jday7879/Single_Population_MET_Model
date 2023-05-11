@@ -33,7 +33,7 @@ file_name = 'Y_28_s_500_RT_7_days_HRT_2_baffles_6' # File name for saving model 
 # Baffle param
 
 # Runtime for reactor system
-RT = 7
+RT = 1
 RT *= TC_day#
 dt_max = 8
 k = 20  # Store data every k min, 1 is every min, 2 every 2 min
@@ -75,7 +75,6 @@ file_y = 'Uy_' + file_a
 data_folder = Path(os.getcwd(), "Output", "Velocity")
 
 try:
-    print(ux)
     ux = np.genfromtxt(data_folder / file_x, delimiter=',')
     uy = np.genfromtxt(data_folder / file_y, delimiter=',')
 except:
@@ -386,7 +385,7 @@ while t.current < RT + 10:
     if ii % storage_steps == 0 or ii == 1:  # round(t.now,2)%(k*60) == 0 : #Storage of data
         ij += 1
         za.storage[:, ij] = za.current
-        Xm.storage[:, ij] = Xm.current
+        # Xm.storage[:, ij] = Xm.current
         mox.storage[:, ij] = mox.current
         mred.storage[:, ij] = mred.current
         I.storage[ij] = I.current
